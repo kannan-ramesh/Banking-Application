@@ -3,7 +3,7 @@ package com.kannanrameshrk.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kannanrameshrk.dto.Bank;
+import com.kannanrameshrk.dto.Customer;
 
 public class Repository {
 	public static Repository repository=null;
@@ -12,7 +12,7 @@ public class Repository {
 		
 	}
 	
-	public static List<Bank> customerList=new ArrayList<>();
+	public static List<Customer> customerList=new ArrayList<>();
 	
 	
 	public static Repository getInstance() {
@@ -22,7 +22,7 @@ public class Repository {
 		return repository;
 	}
 
-	public static List<Bank> getData() {
+	public static List<Customer> getData() {
 		return customerList;
 	}
 	

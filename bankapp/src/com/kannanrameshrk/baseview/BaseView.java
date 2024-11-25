@@ -3,7 +3,7 @@ package com.kannanrameshrk.baseview;
 import java.util.List;
 import java.util.Scanner;
 
-import com.kannanrameshrk.dto.Bank;
+import com.kannanrameshrk.dto.Customer;
 import com.kannanrameshrk.dto.Transaction;
 import com.kannanrameshrk.repository.Repository;
 
@@ -34,10 +34,10 @@ public class BaseView {
 			
 			switch(choice) {
 			case 1:{
-				List<Bank> data=baseViewModel.showCustomerData();
+				List<Customer> data=baseViewModel.showCustomerData();
 				
 				System.out.println("CusId   AccountNo   Name   Balance   EncryptedPwd");
-				for(Bank s:data) {
+				for(Customer s:data) {
 					System.out.println(s.getCustId()+"      "+s.getAccountNo()+"      "+s.getName()+"    "+s.getBalance()+"  "+s.getPassword());
 				}
 				break;
@@ -65,7 +65,7 @@ public class BaseView {
 					break;
 				}
 				double balance=10000;
-				Bank bank=new Bank(name,encryptPassword,balance);
+				Customer bank=new Customer(name,encryptPassword,balance);
 				baseViewModel.addCus(bank);
 				break;
 			}
@@ -79,7 +79,7 @@ public class BaseView {
 				String uPass=input.next();
 				String encryptPassword=encrypt(uPass);
 				
-				Bank user=checkUser(uID,encryptPassword);
+				Customer user=checkUser(uID,encryptPassword);
 				if(user!=null){
 					calOperation(user);
 				}else {
@@ -93,12 +93,12 @@ public class BaseView {
 				System.out.println("\t\tTop N Customer");
 				System.out.println("\t\t************");
 				
-				List<Bank> data=Repository.getData();
-				List<Bank> arr=data.stream().sorted((a,b)->(int)b.getBalance()-(int)a.getBalance()).toList();
+				List<Customer> data=Repository.getData();
+				List<Customer> arr=data.stream().sorted((a,b)->(int)b.getBalance()-(int)a.getBalance()).toList();
 				
 				System.out.println("CusId   AccountNo   Name   Balance   EncryptedPwd");
 				System.out.println("--------------------------------------------------");
-				for(Bank s:arr) {
+				for(Customer s:arr) {
 					System.out.println(s.getCustId()+"      "+s.getAccountNo()+"      "+s.getName()+"    "+s.getBalance()+"  "+s.getPassword());
 				}
 				System.out.println("-----------------------------------------------------");
@@ -116,10 +116,10 @@ public class BaseView {
 		}
 	}
 	
-	private Bank checkUser(int id, String uPass) {
-		List<Bank> user= Repository.getData();
+	private Customer checkUser(int id, String uPass) {
+		List<Customer> user= Repository.getData();
 		
-		for(Bank i:user) {
+		for(Customer i:user) {
 			if( i.getCustId()== id && i.getPassword().equals(uPass) ) {
 				return i;
 			} 
@@ -127,7 +127,7 @@ public class BaseView {
 		return null;
 	}
 
-	private void calOperation(Bank user) {
+	private void calOperation(Customer user) {
 		while(true) {
 			System.out.println();
 			System.out.println("1.ATM WithDraw");
@@ -200,7 +200,7 @@ public class BaseView {
 					System.out.println("Enter Oppsite Person Accno:");
 					int opAccNo=input.nextInt();
 					
-					Bank opData=checkUser(opAccNo);
+					Customer opData=checkUser(opAccNo);
 					
 					if(opData==null) {
 						System.out.println("Opposite User not Found");
@@ -261,10 +261,10 @@ public class BaseView {
 		}
 	}
 
-	private Bank checkUser(int accNo) {
-		List<Bank> data=Repository.getData();
+	private Customer checkUser(int accNo) {
+		List<Customer> data=Repository.getData();
 		
-		for(Bank i:data) {
+		for(Customer i:data) {
 			if(i.getAccountNo()==accNo) {
 				return i;
 			}

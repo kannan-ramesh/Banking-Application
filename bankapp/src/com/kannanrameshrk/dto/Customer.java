@@ -3,7 +3,7 @@ package com.kannanrameshrk.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bank {
+public class Customer {
 	public static int id=11;
 	public static int acc=11011;
 	private int tranId=1;
@@ -15,7 +15,7 @@ public class Bank {
 	private String reTypePassword;
 	public List<Transaction> tranData;
 	
-	public Bank(int cusId, int accountNo, String name, double balance, String password) {
+	public Customer(int cusId, int accountNo, String name, double balance, String password) {
 		this.custId=cusId;
 		id++;
 		this.accountNo=accountNo;
@@ -27,7 +27,7 @@ public class Bank {
 		Transaction tran=new Transaction(tranId++,"Opening",balance,balance);
 		tranData.add(tran);
 	}
-	public Bank(String name, String password, double balance) {
+	public Customer(String name, String password, double balance) {
 		this.custId=id++;
 		this.accountNo=acc++;
 		this.name=name;
@@ -41,13 +41,13 @@ public class Bank {
 		return id;
 	}
 	public static void setId(int id) {
-		Bank.id = id;
+		Customer.id = id;
 	}
 	public static int getAcc() {
 		return acc;
 	}
 	public static void setAcc(int acc) {
-		Bank.acc = acc;
+		Customer.acc = acc;
 	}
 	public int getCustId() {
 		return custId;
