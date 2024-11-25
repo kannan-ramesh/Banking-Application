@@ -1,351 +1,153 @@
+Banking Application
+-------------------
 
-   
-Banking Application Documentation
-1. Introduction
-The Banking Application is a console-based Java program that provides basic banking operations such as managing customers, transactions, and accounts. It simulates features like account creation, withdrawal, deposit, account transfer, and transaction history.
+A console-based Java application for managing customers, transactions, and accounts. It simulates banking features such as account creation, withdrawal, deposit, account transfer, and viewing transaction history.
 
-2. Application Features
-Customer Management:
+Table of Contents
+--------------------
 
-Add a new customer.
+Introduction
+Features
+Project Structure
+Key Functionalities
+Application Flow
+Sample Interaction
+
+Introduction
+------------
+The Banking Application is a Java-based console program that allows users to perform basic banking operations. It includes features for managing customer data, handling transactions, and maintaining account balances securely.
+
+Features
+----------
+Customer Management
+Add new customers.
 Display the list of customers.
-Banking Operations:
+Banking Operations
+ATM Withdrawal: Withdraw money from an account.
+Cash Deposit: Deposit money into an account.
+Account Transfer: Transfer funds between two accounts.
+View Statement: View detailed transaction history.
+Top N Customers
+Displays customers ranked by their account balance.
 
-ATM Withdrawal: Withdraw money from a customer account.
-Cash Deposit: Deposit money into a customer account.
-Account Transfer: Transfer money between accounts.
-View Statement: View account transaction history.
-Top N Customers:
+Password Encryption
+All passwords are encrypted using a custom encryption algorithm.
 
-Display customers ranked by account balance.
-Encryption:
 
-Passwords are encrypted using a custom encryption algorithm.
-3. Project Structure
+Project Structure
 Packages
 com.kannanrameshrk: Main application logic.
 com.kannanrameshrk.baseview: Handles user interaction and application flow.
-com.kannanrameshrk.dto: Contains data models (Customer and Transaction).
+com.kannanrameshrk.dto: Data models for customers and transactions.
 com.kannanrameshrk.repository: Stores and manages application data.
-Classes and Descriptions
-1. Main Class
-Package: com.kannanrameshrk
-Functionality:
+Classes
+Main Class
+
 Entry point of the application.
 Initializes the BaseView class to start the application.
-2. BaseView Class
-Package: com.kannanrameshrk.baseview
-Responsibilities:
-Displays menus for the user to interact with.
+BaseView Class
+
+Displays menus for user interaction.
 Provides options for customer management and banking operations.
-3. BaseViewModel Class
-Package: com.kannanrameshrk.baseview
-Responsibilities:
+BaseViewModel Class
+
 Acts as a bridge between BaseView and Repository.
-Handles data initialization and provides transaction history.
-4. Repository Class
-Package: com.kannanrameshrk.repository
-Responsibilities:
-Stores application data (customerList).
-Provides access to customer data.
-5. Customer Class
-Package: com.kannanrameshrk.dto
+Handles data initialization and transaction history retrieval.
+Repository Class
+
+Manages application data (e.g., customer list).
+Provides access to customer information.
+Customer Class
+
 Attributes:
-custId: Unique identifier for the customer.
-accountNo: Customer's account number.
-name: Customer's name.
-balance: Account balance.
-password: Encrypted password.
-tranData: List of transactions associated with the customer.
-6. Transaction Class
-Package: com.kannanrameshrk.dto
+custId, accountNo, name, balance, password (encrypted), tranData (transaction list).
+Transaction Class
+
 Attributes:
-tId: Transaction ID.
-tranType: Type of transaction (e.g., Deposit, Withdrawal).
-amount: Transaction amount.
-balance: Balance after the transaction.
-4. Key Functionalities
-Customer Addition
-Validates password strength (minimum 6 characters, at least 2 uppercase, 2 lowercase, and 2 digits).
-Encrypts the password using a custom logic:
-Shifts characters (e.g., A → B, 1 → 2).
-ATM Withdrawal
+tId, tranType, amount, balance.
+Key Functionalities
+1. Customer Addition
+Validates password strength:
+Minimum 6 characters, at least 2 uppercase, 2 lowercase, and 2 digits.
+Encrypts passwords using a custom algorithm (e.g., shifts characters).
+
+3. ATM Withdrawal
 Validates user password.
-Ensures minimum balance of 1000 is maintained post-transaction.
-Cash Deposit
-Updates customer balance after deposit.
-Records the transaction.
-Account Transfer
-Transfers funds between two accounts.
-Validates recipient account and password.
-Transaction Statement
-Displays all transactions for the user.
-Top N Customers
-Displays all customers sorted by their balance in descending order.
-5. Application Flow
-Main Menu:
+Ensures a minimum balance of ₹1000 post-transaction.
 
-1. Show Customers: Displays all registered customers.
-2. Add Customers: Adds a new customer after validation.
-3. Operations: Provides options for ATM Withdrawal, Cash Deposit, Account Transfer, and Statement.
-4. Top N Customers: Displays customers sorted by balance.
-5. Exit: Closes the application.
-User Operations:
+5. Cash Deposit
+Updates the account balance.
+Records the transaction in the user's history.
 
-For each operation, the user is prompted to enter details such as User ID and Password.
-Passwords are encrypted and matched for authentication.
-   
-   Banking App
-		*********
-1.show Customers
-2.AddCustomers
-3.Operations
-4.Top n Customer
-5.Exit
-Enter Your Choice:
-1
-CusId   AccountNo   Name   Balance   EncryptedPwd
---------------------------------------------------------
-11      11011      Kumar    10000.0  ApipNbjm23
-12      11012      Madhu    20000.0  CBoljoh23
-13      11013      Rahual    30000.0  DBnqvt23
-14      11014      Robin    40000.0  KBwb22
---------------------------------------------------------
+7. Account Transfer
+Transfers funds between accounts after validation.
+Updates both sender and receiver balances.
 
-1.show Customers
-2.AddCustomers
-3.Operations
-4.Top n Customer
-5.Exit
-Enter Your Choice:
-2
-		 Add Customer
-		*************
-Enter Name:
-Ramesh
-Enter Password:
-12RKkannan
-Enter ReType Password:
-12RKkannan
-Customer Added successfully...
-1.show Customers
-2.AddCustomers
-3.Operations
-4.Top n Customer
-5.Exit
-Enter Your Choice:
-3
-		Bank Operation
-		*************
-Enter Your User ID:
-15
-Enter Your Password:
-12RKkannan
+9. Transaction Statement
+Displays all transactions for a user.
+10. Top N Customers
+Displays customers ranked by balance in descending order.
 
-1.ATM WithDraw
-2.Cash Deposit
-3.Account Transfer
-4.Statement
-5.Exit
-Enter Your Choice:
-1
-		ATM WithDraw
-		**********
-Enter Your Password:
-12RKkannan
-Enter Withdraw Amount:
-2000
-ATM WithDraw Successfully
+Application Flow:
+
+1. Show Customers  
+2. Add Customers  
+3. Operations  
+4. Top N Customers  
+5. Exit  
+
+Banking Operations Menu:
+
+1. ATM Withdrawal  
+2. Cash Deposit  
+3. Account Transfer  
+4. Statement  
+5. Exit  
+
+Sample Interaction
+1. Main Menu Example
+
+1. Show Customers  
+2. Add Customers  
+3. Operations  
+4. Top N Customers  
+5. Exit  
+Enter Your Choice: 1  
 
 
+2. Customer List Output
+CusId   AccountNo   Name    Balance   EncryptedPwd  
+---------------------------------------------------  
+11      11011       Kumar   10000.0   ApipNbjm23  
+12      11012       Madhu   20000.0   CBoljoh23  
+13      11013       Rahul   30000.0   DBnqvt23  
+14      11014       Robin   40000.0   KBwb22  
 
-1.ATM WithDraw
-2.Cash Deposit
-3.Account Transfer
-4.Statement
-5.Exit
-Enter Your Choice:
-2
-		 Cash Deposit
-		*************
-Enter Deposit Amount:
-4000
-Enter Your Password:
-12RKkannan
-Cash Deposit Successfully..
+3. Add Customer
 
+Enter Name: Ramesh  
+Enter Password: 12RKkannan  
+Enter ReType Password: 12RKkannan  
+Customer Added Successfully!  
 
-1.ATM WithDraw
-2.Cash Deposit
-3.Account Transfer
-4.Statement
-5.Exit
-Enter Your Choice:
-3
-		Account Transfer
-		 ***********
-Enter Oppsite Person Accno:
-11011
-Enter Transfer Amount:
-2000
-Enter Your Password:
-12RKkannan
-Account Transfer Successfully
+4. Banking Operation Example
+ATM Withdrawal
 
+Enter Your Password: 12RKkannan  
+Enter Withdraw Amount: 2000  
+ATM Withdrawal Successfully!  
 
-1.ATM WithDraw
-2.Cash Deposit
-3.Account Transfer
-4.Statement
-5.Exit
-Enter Your Choice:
-4
-		Account Statement
-		******************
-ID - 15
-Name - Ramesh
-Account No - 11015
+View Statement
 
----------------------------------------------
- TransId    TransType     Amount    Balance
----------------------------------------------
-1         Opening   10000.0    10000.0
-2         ATMWithdrawal   2000.0    8000.0
-2         CashDeposit   4000.0    12000.0
-2         Transfer To 11011   2000.0    10000.0
----------------------------------------------
+ID: 15  
+Name: Ramesh  
+Account No: 11015  
 
-1.ATM WithDraw
-2.Cash Deposit
-3.Account Transfer
-4.Statement
-5.Exit
-Enter Your Choice:
-5
-
-1.show Customers
-2.AddCustomers
-3.Operations
-4.Top n Customer
-5.Exit
-Enter Your Choice:
-4
-		Top N Customer
-		************
-CusId   AccountNo   Name   Balance   EncryptedPwd
---------------------------------------------------
-14      11014      Robin    40000.0  KBwb22
-13      11013      Rahual    30000.0  DBnqvt23
-12      11012      Madhu    20000.0  CBoljoh23
-11      11011      Kumar    12000.0  ApipNbjm23
-15      11015      Ramesh    10000.0  23SLlboobo
------------------------------------------------------
-1.show Customers
-2.AddCustomers
-3.Operations
-4.Top n Customer
-5.Exit
-Enter Your Choice:
-3
-		Bank Operation
-		*************
-Enter Your User ID:
-15
-Enter Your Password:
-12RKkannan
-
-1.ATM WithDraw
-2.Cash Deposit
-3.Account Transfer
-4.Statement
-5.Exit
-Enter Your Choice:
-4
-		Account Statement
-		******************
-ID - 15
-Name - Ramesh
-Account No - 11015
-
----------------------------------------------
- TransId    TransType     Amount    Balance
----------------------------------------------
-1         Opening   10000.0    10000.0
-2         ATMWithdrawal   2000.0    8000.0
-2         CashDeposit   4000.0    12000.0
-2         Transfer To 11011   2000.0    10000.0
----------------------------------------------
-
-1.ATM WithDraw
-2.Cash Deposit
-3.Account Transfer
-4.Statement
-5.Exit
-Enter Your Choice:
-5
-
-1.show Customers
-2.AddCustomers
-3.Operations
-4.Top n Customer
-5.Exit
-Enter Your Choice:
-3
-		Bank Operation
-		*************
-Enter Your User ID:
-11
-Enter Your Password:
-ZohoMail12
-
-1.ATM WithDraw
-2.Cash Deposit
-3.Account Transfer
-4.Statement
-5.Exit
-Enter Your Choice:
-4
-		Account Statement
-		******************
-ID - 11
-Name - Kumar
-Account No - 11011
-
----------------------------------------------
- TransId    TransType     Amount    Balance
----------------------------------------------
-1         Opening   10000.0    10000.0
-2         Transfer From 11015   2000.0    12000.0
----------------------------------------------
-
-1.ATM WithDraw
-2.Cash Deposit
-3.Account Transfer
-4.Statement
-5.Exit
-Enter Your Choice:
-5
-
-1.show Customers
-2.AddCustomers
-3.Operations
-4.Top n Customer
-5.Exit
-Enter Your Choice:
-4
-		Top N Customer
-		************
-CusId   AccountNo   Name   Balance   EncryptedPwd
---------------------------------------------------
-14      11014      Robin    40000.0  KBwb22
-13      11013      Rahual    30000.0  DBnqvt23
-12      11012      Madhu    20000.0  CBoljoh23
-11      11011      Kumar    12000.0  ApipNbjm23
-15      11015      Ramesh    10000.0  23SLlboobo
------------------------------------------------------
-1.show Customers
-2.AddCustomers
-3.Operations
-4.Top n Customer
-5.Exit
-Enter Your Choice:
+---------------------------------------------  
+TransId   TransType       Amount   Balance  
+---------------------------------------------  
+1         Opening         10000.0  10000.0  
+2         ATM Withdrawal   2000.0   8000.0  
+3         Cash Deposit     4000.0  12000.0  
+4         Transfer To 11011 2000.0 10000.0  
+---------------------------------------------  
